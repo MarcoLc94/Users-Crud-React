@@ -1,0 +1,24 @@
+/* Reset CSS básico */
+
+/* Elimina márgenes, rellenos y bordes predeterminados */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Establece un ancho del borde uniforme en todo el documento */
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+/* Remueve el estilo de lista predeterminado */
+ul, ol {
+    list-style: none;
+}
+
+body {
+    background-color: rgb(255, 223, 228);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+

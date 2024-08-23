@@ -1,0 +1,42 @@
+.card-container{
+    background-color: rgb(204, 96, 114);
+    margin: 10px;
+    display: flex ;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 70%;
+    flex-direction: column;
+    border-radius: 10px 10px 10px 10px;
+    padding: 10px;
+    color: #fafafa;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+
+    img{
+        margin: 10px;
+        max-width: 20vw;
+        border-radius: 10px 10px 10px 10px;
+        object-fit: cover;
+    }
+
+    .button-card {
+        display: flex;
+        gap: 10px;
+        margin: 10px;
+    }
+
+    button {
+        padding: 10px 15px 10px 15px;
+        border: none;
+        background-color: rgb(189, 75, 199);
+        color: #fafafa;
+        cursor: pointer;
+        border-radius: 10px 10px 10px 10px;
+     }
+
+     button:hover {
+        transform: scale(1.1);
+        filter: drop-shadow(0px 0px 10px rgb(211, 67, 211));
+        background-color: rgb(216, 89, 228);
+     }
+}
