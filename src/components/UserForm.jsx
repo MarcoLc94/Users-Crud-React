@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import "./UserForm.css";
 import { useForm } from "react-hook-form";
+import Swal from 'sweetalert2/src/sweetalert2.js'
 
 const UserForm = ({
   createUser,
@@ -9,6 +10,8 @@ const UserForm = ({
   updateUser,
   isEdit,
   setIsEdit,
+  isVisible,
+  setIsVisible
 }) => {
   const {
     handleSubmit,
@@ -16,6 +19,10 @@ const UserForm = ({
     reset,
     formState: { errors },
   } = useForm();
+
+  const handleClose = () =>{
+    setIsVisible(false)
+  }
 
   useEffect(() => {
     reset(userSelected);
@@ -34,7 +41,12 @@ const UserForm = ({
         image_url: "",
       });
       setIsEdit(false);
-      alert("User updated succesfully");
+      setIsVisible(false)
+      Swal.fire({
+        title: "Good job!",
+        text: `${userSelected.first_name} has been updated successfully`,
+        icon: "success"
+      });
     } else {
       createUser(data);
       reset({
@@ -44,13 +56,29 @@ const UserForm = ({
         last_name: "",
         birthday: "",
         image_url: "",
+      })
+      setIsVisible(false)
+      Swal.fire({
+        title: "Good job!",
+        text: "User created Succesfully!",
+        icon: "success"
       });
     }
   };
 
   return (
-    <div>
-      <form className="form-container" onSubmit={handleSubmit(submit)}>
+    <div className="form-master" onSubmit={handleSubmit(submit)}
+    style={{ display: isVisible ? "flex" : "none" }}>
+      <form
+        className="form-container"
+        onSubmit={handleSubmit(submit)}
+        style={{ display: isVisible ? "grid" : "none" }}
+      >
+        <div className="button-close">
+          <a onClick={handleClose}>
+            x
+          </a>
+        </div>
         <label className="label-container">
           <span>Email: </span>
           <input
@@ -101,7 +129,7 @@ const UserForm = ({
           <input type="text" {...register("image_url")} required />
         </label>
         <div className="button-container">
-          <button>{isEdit ? <span>Update</span> : <span>Submit</span>}</button>
+          <button>{isEdit ? <span>Update</span> : <span>Create</span>}</button>
         </div>
       </form>
     </div>

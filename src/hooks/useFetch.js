@@ -2,7 +2,7 @@ import { useState } from "react"
 import axios from "axios"
 
 const useFetch = (path) => {
-    const [response, setResponse] = useState(null)
+    const [response, setResponse] = useState()
     const BASE_URL = "https://users-crud.academlo.tech"
 
     const getData = () => {
